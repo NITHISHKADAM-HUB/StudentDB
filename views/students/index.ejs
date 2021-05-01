@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate')%>
+
+
+<h1>All students</h1>
+
+<div>
+    <a href="/students/new">Add student</a>
+</div>
+<form action="/students/<%=students.name%> " method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search by Name" aria-label="Search"
+            aria-describedby="button-addon2" name="name">
+        <button class="btn btn-outline-secondary">search</button>
+    </div>
+</form>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <% for (let student of students){%>
+    <div class="col">
+        <div class="card h-100" style="width: 18rem;">
+            <div class="card-body">
+                <div><%if(student.images.length) {%>
+                    <img class=" img-responsive card-img-top img-thumbnail" alt="" src="<%=student.images[0].url%>">
+                    <% }%></div>
+                <div>
+                    <div>
+                        <h5 class="card-title"><%= student.name %> </h5>
+                        <p class="card-text"><%= student.degree %></p>
+                        <p class="card-text">
+                            <small class="text-muted"><%= student.email%></small>
+                        </p>
+                        <a class="btn btn-primary" href="/students/<%=student._id%>">View <%=student.name%></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }%>
+</div>
