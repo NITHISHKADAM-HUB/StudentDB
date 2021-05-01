@@ -26,9 +26,6 @@
             <div class="mb-3">
                 <% student.images.forEach(function(img, i) {  %>
                 <img src="<%=img.url %>" class="img-thumbnail" alt="">
-                <div class="form-check-inline">
-                    <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
-                </div>
                 <% })%>
             </div>
 
